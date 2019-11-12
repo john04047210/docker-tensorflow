@@ -1,0 +1,24 @@
+version: '3.2'
+services:
+  ml_cpu:
+    image: tensorflow/tensorflow:latest-py3
+    container_name: tensorflow_cpu
+    restart: 'no'
+    command: python /hello.py
+    ports:
+      - "8888:8888"
+    volumes:
+      - './ML_CPU/hello.py:/hello.py'
+      - './datasets/:/root/.keras/datasets/'
+
+  ml_gpu:
+    image: tensorflow/tensorflow:latest-gpu-py3
+    container_name: tensorflow_gpu
+    restart: 'no'
+    command: python /hello.py
+    ports:
+      - "8888:8888"
+    volumes:
+      - './ML_CPU/hello.py:/hello.py'
+      - './datasets/:/root/.keras/datasets/'
+
